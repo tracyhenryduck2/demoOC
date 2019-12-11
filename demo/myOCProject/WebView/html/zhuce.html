@@ -1,0 +1,93 @@
+<!doctype html>
+<html ng-app="Register">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<title>注册</title>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/henryLIB.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/zhuce.js"></script>
+<script type="text/javascript">
+    function submit(){
+     
+     if(check1()&&check2()&&check3())
+     {
+       createLoading2();
+       $.ajax({
+          type:"get",
+          url:"http://tech.zhetian.net/app/mlm/submitRegister.txt",
+          dataType:"text",
+          success:function(data){
+              removeMask();
+              var response = eval("("+data+")");
+              if(response.flag==true) 
+              {
+                progress("Success","注册成功");
+                clients.gofinish();
+              }
+              else
+              {
+                progress("Error","注册失败");
+              }
+          },
+            error: function () {
+              removeMask();
+               progress("Error","网络连接失败");
+              }
+          });
+     }
+    } 
+</script>
+<style type="text/css">
+   b {color: red;font-size: 0.9em;}
+</style>
+</head>
+<body style="background:#ebebeb" ng-controller="RegisterController as Register">
+<div class="common-wrapper">
+  <div class="main">
+  <div style="width:100%; padding:3% 0%; color:#333; font-size:14px;">请设置用户名(登录名)</div>
+    <div class="item item-phone">
+      <input class="txt-input txt-phone" type="text" placeholder="请输入登录名" ng-model="Register.username" ng-change="Register.checkName();"  maxlength="20">
+      <b class="input-close" style="display: block;">{{Register.checknote1}}</b></div>
+
+  <div style="width:100%; padding:3% 0%; color:#333; font-size:14px;">请设置密码</div>
+    <div class="item item-phone">
+      <input id="denglu" ng-change="Register.checkpassword();" ng-model="Register.password" class="txt-input txt-phone" type="password" placeholder="请输入6-20位字符"  maxlength="20" >
+      <b class="input-close" style="display: block;">{{Register.checknote2}}</b></div>
+  <div style="width:100%; padding:3% 0%; color:#333; font-size:14px;">请确认密码</div>
+    <div class="item item-phone">
+      <input id="queren" ng-change="Register.checkpasswordconfirm();" ng-model="Register.passwordconfirm" class="txt-input txt-phone" type="password" placeholder="请输入6-20位字符"  maxlength="20">
+      <b id="tishi2" class="input-close" style="display: block;">{{Register.checknote3}}</b> </div>      
+    <div class="item item-captcha">      
+      <div class="err-tips">密码由6到20位字符组成，包含至少两种以上的字母、数字、或者半角字符，区分大小写。</div>
+      <div class="clear"></div>
+    </div>
+
+  <div style="width:100%; padding:3% 0%; color:#333; font-size:14px;">请设置性别</div>
+    <div class="item item-phone" ng-switch on="Register.sex">
+      <div class="sexchoose" ng-click="Register.chooseSex(1);"><img style="width:20px" src="images/sex_06.png"><span ng-switch-when="1"><img style="width:20px" src="images/gouzi.png"></span></div>
+      <div class="sexchoose" ng-click="Register.chooseSex(2);"><img  style="width:20px" src="images/sex_03.png"><span ng-switch-when="2"><img style="width:20px" src="images/gouzi2.png"></span></div>
+      <div class="clear"></div>
+    </div>
+
+
+  <div style="width:100%; padding:3% 0%; color:#333; font-size:14px;">请设置昵称</div>
+    <div class="item item-phone">
+      <input class="txt-input txt-phone" type="text" placeholder="请输入昵称" ng-model="Register.nickname"  maxlength="20">
+      <b class="input-close" style="display: block;"></b></div>
+
+  <div style="width:100%; padding:3% 0%; color:#333; font-size:14px;">请填写手机</div>
+    <div class="item item-phone">
+      <input  name="mobile" class="txt-input txt-phone" type="number" placeholder="请输入手机号" ng-model="Register.phone"  maxlength="13"></div>
+    <div class="item item-captcha">      
+      <div class="clear"></div>
+    </div>
+
+    <div class="item item-btns" ng-click="Register.submit();" style="width:100%; margin-top:20px;"><a class="btn-next">完成</a></div>   
+  </div>
+</div>
+</body>
+</html>

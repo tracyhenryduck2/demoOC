@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="Historys">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/lishixinchengdan.js"></script>
+<script type="text/javascript" src="js/common.js"></script>   
+<title>行程单</title>
+</head>
+
+<body ng-controller="HistorysController as Historys">
+ <div class="xc_title" ng-show="Historys.nowlist.length>0">当前行程</div>
+<div class="chengyuan" ng-repeat="map in Historys.nowlist" ng-click="Historys.gotoTuan(map.id)">
+  <ul>
+    <li style="width:30%">{{map.start_date*1000 | date:'MM.dd'}}-{{map.end_date*1000 | date:'MM.dd'}}</li>
+    <li style="width:50%">{{map.team_name}}</li>
+    <li style="width:20%">{{map.people_num}}人</li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+<div class="xc_title" ng-show="Historys.fulist.length>0">未来行程</div>
+<div class="chengyuan" ng-repeat="map in Historys.fulist" ng-click="Historys.gotoTuan(map.id)">
+  <ul>
+    <li style="width:30%">{{map.start_date*1000 | date:'MM.dd'}}-{{map.end_date*1000 | date:'MM.dd'}}</li>
+    <li style="width:50%">{{map.team_name}}</li>
+    <li style="width:20%">{{map.people_num}}人</li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+<div class="xc_title" ng-show="Historys.hislist.length>0">历史行程</div>
+<div class="chengyuan" ng-repeat="map in Historys.hislist" ng-click="Historys.gotoTuan(map.id)">
+  <ul>
+    <li style="width:30%">{{map.start_date*1000 | date:'MM.dd'}}-{{map.end_date*1000 | date:'MM.dd'}}</li>
+    <li style="width:50%">{{map.team_name}}</li>
+    <li style="width:20%">{{map.people_num}}人</li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+</body>
+</html>

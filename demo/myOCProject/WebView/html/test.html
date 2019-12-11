@@ -1,0 +1,249 @@
+<!doctype html>
+<html ng-app="Add">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/henryLIB.js"></script>
+<script type="text/javascript" src="js/test.js"></script>
+<title>创建行程单</title>
+<style type="text/css">
+  .zhuyi { width:90%; padding:5%; border-bottom:1px solid #e1e1e1}
+  .zhuyi p { color:#666666; line-height:2em; font-size:1.2em;width: 50%;float: left}
+  .zhuyi textarea {font-size: 1.2em;margin-top: 4px}
+  .anniu4 {  
+    /* width: 20%; */
+    background: #F00;
+    text-align: center;
+    color: #FFF;
+    font-size: 1em;
+    padding: 2% 4% 2% 4%;
+    margin-top: 5%;
+    margin-left:10px; 
+    float: left;}
+
+  .anniu5 {
+
+    background: #228fcf;
+    text-align: center;
+    color: #FFF;
+    font-size: 1em;
+    padding: 2% 4% 2% 4%;
+    margin-top: 5%; 
+    float: left;
+  }
+
+  .rail_content {
+    margin-bottom: 10px;
+  }
+
+  .mainplace {width: 90%;padding: 15px 15px 22px 17px;border-bottom: 1px solid #e1e1e1;}
+  .mainplace-zhankai {padding-bottom: 22px}
+  .plus {width: 10%;float: left;margin-top: 20px;}
+  .raillist {color:#666666;padding: 8px 5px 8px 0px;    font-size: 1.2em;}
+  .edit_rail {padding-top: 10px;border-top: 1px solid #e1e1e1}
+</style>
+</head>
+
+<body ng-controller="AddController as Add">
+<!--步骤一-->
+<div class="zhanghu" ng-show="Add.process==1">
+  <ul>
+    <li>
+      <span class="wenzi2">团名称:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.teamname" placeholder="请输入团名称">
+        <div class="clear"></div>
+    </li>
+        <li>
+      <span class="wenzi2">开始时间:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" ng-click="Add.choosedate(1);" readonly ng-model="Add.detail.startdate"  placeholder="请输入开始日期">
+        <div class="clear"></div>
+    </li>
+        <li>
+      <span class="wenzi2">结束时间:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" ng-click="Add.choosedate(2);" readonly ng-model="Add.detail.enddate"  placeholder="请输入结束日期">
+        <div class="clear"></div>
+    </li>
+         <li>
+      <span class="wenzi2">总人数:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.peopleNum" placeholder="请输入总人数">
+        <div class="clear"></div>
+    </li>
+    <li>
+     <span class="wenzi2">导游:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" readonly ng-model="Add.detail.guidename">
+        <input type="hidden" class="wenben" ng-model="Add.detail.guideid">
+        <div class="clear"></div>
+    </li>
+    <li>
+      <span class="wenzi2">手机:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" readonly  ng-model="Add.detail.guidephone">
+        <div class="clear"></div>
+    </li>
+    <li>
+      <span class="wenzi2">领队:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.leadname" placeholder="请输入领队">
+        <div class="clear"></div>
+    </li>
+    <li>
+    <span class="wenzi2">手机:</span>
+        <input type="number" class="wenben" ng-model="Add.detail.leadphone" placeholder="请输入手机号">
+        <div class="clear"></div>
+    </li>
+     <li>
+     <span class="wenzi2">紧急联系人:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.emergencyapplyer" placeholder="请输入紧急联系人">
+        <div class="clear"></div>
+    </li>
+     <li>
+    <span class="wenzi2">手机:</span>
+        <input type="number" class="wenben" ng-model="Add.detail.emergencyphone" placeholder="请输入手机号">
+        <div class="clear"></div>
+    </li>
+     <li>
+     <span class="wenzi2">车牌号:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.carnumber" placeholder="请输入车牌号">
+        <div class="clear"></div>
+    </li>
+     <li>
+     <span class="wenzi2">出发参考航班:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.startflight" placeholder="请输入出发航班">
+        <div class="clear"></div>
+    </li>
+     <li>
+      <span class="wenzi2">回程参考航班:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.endflight" placeholder="请输入回程航班">
+        <div class="clear"></div>
+    </li>
+
+  </ul>
+</div>
+<!--步骤二-->
+<div class="zhanghu" ng-show="Add.process==2">
+<div class="zhuyi">
+  <p>出发集合信息:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.startgather" name="content" resize="none" rows="2" placeholder="请输入目的地"></textarea>
+</div>
+<div class="zhuyi">
+  <p >机场接送信息:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.airportsend" name="content" resize="none" rows="2" placeholder="请输入当地气候"></textarea>
+</div>
+<div class="zhuyi">
+  <p >机场集合信息:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.airportgather" name="content" resize="none" rows="2" placeholder="请输入当地时间"></textarea>
+</div>
+</div>
+
+<!--步骤三-->
+<div ng-repeat="map in Add.datelist" class="mainplace" ng-class="{'mainplace-zhankai':map.zhankai==true}" ng-switch on="map.zhankai" ng-show="Add.process==3">
+ 
+  <div style="width:90%;float:left;">
+  <div style="float:left; width:100%; font-size:1.5em; line-height:1.5em">{{map.date}}第{{$index+1 | NumberFilter}}天</div>
+  <div style="float:left; width:100%; font-size:1.1em; padding-bottom: 10px;">
+       <div class="anniu5" ng-click="Add.addplace($index,map.place)">{{map.place}}</div>
+      <div class="anniu4" ng-click="Add.addreferweather($index,map.referWeather)">{{map.referWeather}}</div>
+  </div>
+  </div>
+   <div class="plus" ng-switch-when="false" ng-click="Add.zhankai($index,true);"><img src="images/img2_03.png"  alt=""/></div>
+   <div class="plus" ng-switch-when="true" ng-click="Add.zhankai($index,false);"><img src="images/img2_06.png"  alt=""/></div>
+   <div class="plus" ng-switch-default     ng-click="Add.zhankai($index,true);"><img src="images/img2_03.png"  alt=""/></div>
+  <div class="clear"></div>
+
+
+
+<div class="rail_detail" ng-style="map.style">
+  <p style=" color:#666666; line-height:2em; font-size:1.2em" ng-show="map.traillist.length>0">行程路线</p>
+   
+  <div class="raillist" ng-repeat="map2 in map.traillist" >
+    <p style="width: 31%;float: left;">{{map2.starttime}}-{{map2.endtime}}</p><p style="width: 60%;float: left;">{{map2.interest}}</p><p style="width: 24px;float: left;" ng-click="Add.delete($index,$parent.$index)"><img src="images/delete.png"></p>
+    <div class="clear"></div>
+  </div>
+
+<div class="edit_rail" ng-show="!map.addflag">
+  <div class="rail_content">
+         <span class="wenzi2">起始时间:</span>
+        <input type="text" readonly class="wenben" ng-model="map.edit_starttime" style=" color: #228fcf;text-align: center;border: 1px solid #228fcf;border-radius: 5px;" ng-click="Add.chooseStartTime($index)">
+        <div class="clear"></div>
+  </div>
+
+  <div class="rail_content">
+         <span class="wenzi2">结束时间:</span>
+        <input type="text" readonly class="wenben" ng-model="map.edit_endtime" style="color: #228fcf;text-align: center;border: 1px solid #228fcf;border-radius: 5px;" ng-click="Add.chooseEndTime($index)">
+        <div class="clear"></div>
+  </div>
+
+    <div class="rail_content">
+         <span class="wenzi2">景&nbsp;&nbsp;点:</span>
+        <input type="text" readonly class="wenben" ng-click="Add.chooseInterest($index,map.edit_interest)" ng-model="map.edit_interest" style="color: #228fcf;text-align: center;border: 1px solid #228fcf;border-radius: 5px;">
+        <div class="clear"></div>
+  </div>
+ 
+
+  <div class="anniu3" ng-click="Add.addrail($index,true)">取消</div>
+  <div class="anniu2" ng-click="Add.confirmrail($index,true)">确定</div>
+  <div class="clear"></div>
+</div>
+
+  <div class="anniu" style="margin-top: 10px" ng-show="map.addflag" ng-click="Add.addrail($index,false)">添加行程</div>
+</div>
+</div>
+
+<!--步骤四-->
+<div class="zhanghu" ng-show="Add.process==4">
+<div class="zhuyi">
+  <p>目的地介绍:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.summary" name="content" resize="none" rows="2" placeholder="请输入目的地"></textarea>
+</div>
+<div class="zhuyi">
+  <p >当地气候:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.climate" name="content" resize="none" rows="2" placeholder="请输入当地气候"></textarea>
+</div>
+<div class="zhuyi">
+  <p >当地时间:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.localtimes" name="content" resize="none" rows="2" placeholder="请输入当地时间"></textarea>
+</div>
+<div class="zhuyi">
+  <p >衣着穿戴:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.clothes" name="content" resize="none" rows="2" placeholder="请输入衣着穿戴"></textarea>
+</div>
+<div class="zhuyi">
+  <p>备注:</p>
+     <textarea class="textsty textarea02" ng-model="Add.detail.note" name="content" resize="none" rows="2" placeholder="请输入备注"></textarea>
+</div>
+</div>
+
+
+
+<!--步骤四-->
+<div ng-show="Add.process==5">
+
+  <div class="chengyuan1" ng-show="Add.mblist.length>0">
+    <ul>
+      <li >姓名</li>
+      <li>性别</li>
+      <li>年龄</li>
+      <li>联系电话</li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+    <div class="chengyuan1" ng-repeat="map in Add.mblist">
+      <ul ng-switch on="map.sex">
+        <li>{{map.name}}</li>
+        <li ng-switch-when="1">男</li>
+        <li ng-switch-when="2">女</li>
+        <li>{{map.age}}</li>
+        <li>{{map.phone}}</li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+
+
+
+  <div class="anniu" ng-click="Add.addchengyuan()">添加成员</div>
+</div>
+
+</body>
+</html>

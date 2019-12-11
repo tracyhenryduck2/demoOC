@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="Say">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/shuoshuo.js"></script>
+<title>说说</title>
+</head>
+
+<body  ng-controller="SayController as Say" style="background:#ebebeb">
+<div class="kuan">
+  <textarea class="textsty1 textarea22" name="content" placeholder="请输入要分享的内容" resize="none"></textarea>
+  <div style=" width:100%;">
+    <div ng-repeat="map in Say.list" ng-click="Say.deletepic($index);" style="width:20%;; float:left;margin-left:5%;margin-bottom:10px"><img ng-src="{{map.thumbnail}}"   alt=""/></div>
+    <div ng-click="Say.addpic();" ng-show="Say.list.length<9" style="width:20%;; float:left;margin-left:5%;margin-bottom:10px"><img src="images/shangc_03.png"   alt=""/></div>  
+    <div ng-show="Say.list.length==0" style="float:left; font-size:1.5em; line-height:2.2em; margin-left:5%">添加图片</div>
+    <div class="clear"></div>
+  </div>
+  
+</div>
+<!-- <div class="zhanghu" >
+  <ul>
+    <li>
+      <div style="width:30px; float:left"></div>
+      地点
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+  </ul>
+</div>
+<div class="zhanghu" style="margin-top: 20px; border-top:1px solid #e1e1e1">
+  <ul>
+    <li>
+      <div style="width:30px; float:left"></div>
+      谁能看见
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+  </ul>
+</div> -->
+
+</body>
+</html>

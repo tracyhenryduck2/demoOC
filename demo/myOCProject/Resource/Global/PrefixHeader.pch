@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//
+//  Created by Mac on 2019/12/11.
+//  Copyright © 2019 Mac. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+//引入Masonry两个宏 便于写布局代码
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+#define kIPhoneX                    ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+#ifdef __OBJC__
+#import <AFNetworking/AFNetworking.h>
+#import <JSONModel/JSONModel.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+MP.h"
+#import "MWPhotoBrowser.h"
+#import "Macros.h"
+#import "MPEnumerateHeader.h"
+#import "MPTargetConfigMacros.h"
+#import "MBConstants.h"
+#import "NotificationContants.h"
+#import "UITableView+NoData.h"
+#import "AppDelegate.h"
+
+
+#endif
+
+#endif /* PrefixHeader_pch */

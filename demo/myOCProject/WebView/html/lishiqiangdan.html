@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="Historys">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/lishiqiangdan.js"></script>
+<script type="text/javascript" src="js/common.js"></script>   
+<title>历史抢单</title>
+<style type="text/css">
+.qiangdan {
+    background-color: white;
+    margin: 5% 0% 5% 0%;
+}
+.itemonline{
+  width: 90%;float: left;margin: 0% 5% 0% 5%;font-size: 1.2em;padding: 5px 0 5px 0;border-bottom: 1px solid #F6F6F6;
+}
+
+.itemonline .title {width:30%;float:left;}
+.itemonline .content {width:70%;float:left;}
+
+.halfitem-left {width:45%;float:left;margin-left:5%;font-size:1.2em;padding: 5px 0 5px 0;border-bottom: 1px solid #F6F6F6;}
+.halfitem-left .title {width:30%;float:left;}
+.halfitem-left .content {width:30%;float:left;}
+
+.halfitem-right {width:45%;float:left;;font-size:1.2em;padding: 5px 0 5px 0;border-bottom: 1px solid #F6F6F6;}
+.halfitem-right .title {width:30%;float:left;}
+.halfitem-right .content {width:30%;float:left;}
+</style>
+</head>
+
+<body style="background:#ebebeb" ng-controller="HistorysController as Historys">
+
+<div class="qiangdan" ng-repeat="map in Historys.list" ng-click="Historys.detail(map.id);">
+  <div class="itemonline"><p class="title">日期:</p><p class="content">{{map.start_date*1000 | date:'yyyy.MM.dd'}}-{{map.end_date*1000 | date:'yyyy.MM.dd'}}</p></div>
+  <div class="itemonline"><p class="title">名称:</p><p class="content">{{map.name}}</p></div>
+  <div class="halfitem-left"><p class="title">天数:</p><p class="content">{{map.days}}天</p></div>
+  <div class="halfitem-right"><p class="title">价格:</p><p class="content">{{map.price}}元</p></div>
+  <div class="itemonline"><p class="title">状态:</p><p class="content" ng-show="map.status==0">竞聘中</p><p class="content" ng-show="map.status==1">成功</p><p class="content" ng-show="map.status==2">失败</p></div>
+  <div class="clear"></div>
+</div>
+
+</body>
+</html>

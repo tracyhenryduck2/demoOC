@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app="Add">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/addxingchengdan.js"></script>
+<title>创建行程单</title>
+</head>
+
+<body ng-controller="AddController as Add">
+<div class="zhanghu">
+  <ul>
+    <li>
+      <span class="wenzi2">团名称:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.teamname" placeholder="请输入团名称">
+        <div class="clear"></div>
+    </li>
+        <li>
+      <span class="wenzi2">开始时间:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" ng-click="Add.choosedate(1);" readonly ng-model="Add.detail.startdate"  placeholder="请输入开始日期">
+        <div class="clear"></div>
+    </li>
+        <li>
+      <span class="wenzi2">结束时间:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" ng-click="Add.choosedate(2);" readonly ng-model="Add.detail.enddate"  placeholder="请输入结束日期">
+        <div class="clear"></div>
+    </li>
+         <li>
+      <span class="wenzi2">总人数:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.peopleNum" placeholder="请输入总人数">
+        <div class="clear"></div>
+    </li>
+    <li>
+     <span class="wenzi2">导游:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" readonly ng-model="Add.detail.guidename">
+        <input type="hidden" class="wenben" ng-model="Add.detail.guideid">
+        <div class="clear"></div>
+    </li>
+    <li>
+      <span class="wenzi2">手机:</span>
+        <input style="background: #EBEBE4;" type="text" class="wenben" readonly  ng-model="Add.detail.guidephone">
+        <div class="clear"></div>
+    </li>
+    <li>
+      <span class="wenzi2">领队:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.leadname" placeholder="请输入领队">
+        <div class="clear"></div>
+    </li>
+    <li>
+    <span class="wenzi2">手机:</span>
+        <input type="number" class="wenben" ng-model="Add.detail.leadphone" placeholder="请输入手机号">
+        <div class="clear"></div>
+    </li>
+     <li>
+     <span class="wenzi2">紧急联系人:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.emergencyapplyer" placeholder="请输入紧急联系人">
+        <div class="clear"></div>
+    </li>
+     <li>
+    <span class="wenzi2">手机:</span>
+        <input type="number" class="wenben" ng-model="Add.detail.emergencyphone" placeholder="请输入手机号">
+        <div class="clear"></div>
+    </li>
+     <li>
+     <span class="wenzi2">车牌号:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.carnumber" placeholder="请输入车牌号">
+        <div class="clear"></div>
+    </li>
+     <li>
+     <span class="wenzi2">出发参考航班:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.startflight" placeholder="请输入出发航班">
+        <div class="clear"></div>
+    </li>
+     <li>
+      <span class="wenzi2">回程参考航班:</span>
+        <input type="text" class="wenben" ng-model="Add.detail.endflight" placeholder="请输入回程航班">
+        <div class="clear"></div>
+    </li>
+
+  </ul>
+</div>
+</body>
+</html>

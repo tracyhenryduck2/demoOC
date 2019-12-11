@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="Wode">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=sgfz5jGjPEpKEvInYsfsenen"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/wodexinxi.js"></script>
+
+<title>我的信息</title>
+</head>
+
+<body style="background:#ebebeb;" ng-controller="WodeController as Wode">
+<div class="wodeinfo" style="margin-top: 20px; border-top:1px solid #e1e1e1">
+  <ul>
+    <li ng-click="Wode.ChangeTouX()">
+      <div style="width:30px; float:left"></div>
+      头像
+      <div style="width:30px; float:right"><img id="touxiang" ng-src="{{Wode.user.avatarurl}}"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.ChangeNickname()">昵称
+      <div style="width:170px; float:right;text-align:right">{{Wode.user.nickname}}<img style="width:10px" src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li>二维码
+      <div style="width:30px; float:right"><img  src="images/img1_07.png"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.ChangeSex()" ng-switch on="Wode.user.sex">性别
+      <div style="width:130px; float:right;text-align:right" ng-switch-when="1">男<img style="width:10px" src="images/anniu1.png"   alt=""/></div>
+      <div style="width:130px; float:right;text-align:right" ng-switch-when="2">女<img style="width:10px" src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.ChangeAge()">年龄
+      <div style="width:130px; float:right;text-align:right">{{Wode.user.age}}<img style="width:10px" src="images/anniu1.png"   alt=""/></div>
+    </li>
+  </ul>
+</div>
+<div class="kuan" ng-show="Wode.guideInfo!=null">
+  <div style="width:100%; font-size:1.5em; color:#12b7f5; ">电子导游证</div>
+  <div style="border-radius: 15px; border:1px solid #e1e1e1; width:90%; padding:5%; margin-top:3%; ">
+    <div style=" width:25%;  float:left"><img src="images/img3_11.jpg" alt=""/>
+      <p style=" text-align:center; line-height:2em; font-size:1.2em; color:#666666">{{Wode.guideInfo.name}}</p>
+    </div>
+    <div style="float:right; width:69%; line-height:26px; color:#666666; font-size:1.2em ">
+      <p style=" width:100%; text-align:left; color:#666666; font-size:1em">ID:{{Wode.guideInfo.certificate_id}}</p>
+      单位：{{Wode.guideInfo.unit}}<br>
+      职位：{{Wode.guideInfo.position}}<br>
+      电话：{{Wode.guideInfo.phone}}<br>
+      地址：{{Wode.guideInfo.address}} </div>
+    <div class="clear"></div>
+  </div>
+</div>
+<div class="kuan">
+  <div style="width:100%; font-size:1.5em; color:#12b7f5; ">带团经历</div>
+  <div style="width:100%; margin-top:5%">
+    <div style=" width:20%; float:left;font-size:1.2em; color:#666;">国内：</div>
+<!--     <div style=" width:80%; float:left;"><img src="images/img3_15.jpg"  alt=""/></div> -->
+<div id="allmap" style=" width:80%; float:left;    height: 300px;"></div>
+    <div class="clear"></div>
+  </div>
+  <div style="width:100%; margin-top:5%">
+    <div style=" width:20%; float:left; font-size:1.2em; color:#666;">国外：</div>
+    <div class="guoqi">
+      <ul>
+        <li><img src="images/img3_19.jpg"  alt=""/></li>
+        <li><img src="images/img3_21.jpg"  alt=""/></li>
+        <li><img src="images/img3_23.jpg"  alt=""/></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+</div>
+<div class="kuan">
+  <div style="width:100%; font-size:1.5em; color:#12b7f5; ">好评率</div>
+  <div style=" width:95%; height:20px; background:#F6EDED;border-radius: 15px; text-align:center; margin-top:5%; color:#FFF;line-height: 20px;"><div style="width:60%; background:#F00;border-radius: 15px;">99%</div></div>
+</div>
+</body>
+</html>

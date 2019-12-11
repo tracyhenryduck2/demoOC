@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="Pinlun">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/pinlun.js"></script>
+<title>团评论</title>
+</head>
+
+<body  style="background:#ebebeb" ng-controller="PinlunController as Pinlun">
+
+<div class="kuan">
+	<ul style="font-size:1.2em; ">
+    	<li>全部</li>
+        <li>好评</li>
+        <li>一般</li>
+        <li>差评</li>
+    </ul>
+    <ul>
+    	<li>{{Pinlun.detail.allNum}}</li>
+        <li>{{Pinlun.detail.goods}}</li>
+        <li>{{Pinlun.detail.sosos}}</li>
+        <li>{{Pinlun.detail.bads}}</li>
+    </ul>
+    <div class="clear"></div>
+</div>
+<div class="kuan" ng-repeat="map in Pinlun.detail.words">
+	<div style=" color:#5b5b5b; line-height:2em"><span style="font-size:1.4em">{{map.name}}：</span></div>
+    <div style="color:#666; line-height:1.8em">{{map.content}}</div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

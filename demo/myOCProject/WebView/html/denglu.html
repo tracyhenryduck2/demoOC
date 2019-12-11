@@ -1,0 +1,116 @@
+<!doctype html>
+<html ng-app="Login">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>登录</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/henryLIB.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/denglu.js"></script>
+    <style type="text/css">
+.main .item .txt-username {
+    padding: 0% 5%;
+}
+.main .item .txt-input {
+    width: 90%;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    background: #fff;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    font-size: 16px;
+    color: #252525;
+    -webkit-appearance: none;
+}
+.main .item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.main {
+    padding: 20px 15px 0;
+}
+.common-wrapper {
+    width: 100%;
+    position: relative;
+    max-width: 640px;
+    min-width: 320px;
+    overflow: hidden;
+    margin: 0 auto;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    padding-bottom: 20px;
+}
+.main .item-btns .btn-next, .main .item-btns .btn-login {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    background: #15c6da;
+    text-decoration: none;
+    line-height: 39px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+}
+.main .item-login-option {
+    padding-top: 20px;
+    margin-bottom: 34px;
+    font-size: 14px;
+}
+.main .item-login-option .register-free {
+    float: left;
+    width: 50%;
+}
+.main .item .txt-username,.main .item .txt-password {
+    padding: 0% 5%;
+}
+.main .item-login-option .register-free a, .main .item-login-option .retrieve-password a {
+    text-decoration: underline;
+    color: #686868;
+    font-size: 15px;
+}
+.main .item-login-option .retrieve-password {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+    </style>
+</head>
+<body  style="background:#ebebeb" ng-controller="LoginController as Login">
+<div class="common-wrapper">
+    <div class="main">
+    <form action="" method="post" id="frm_login">
+		<input type="hidden" name="returnurl" value="">
+		<div class="new-txt-err new-mg-t10" id="error" style="display:none"></div> 
+		<div class="item item-username">
+            <input class="txt-input txt-username" type="text" name="username" id="username" ng-model="Login.username" placeholder="请输入用户名">
+        </div>
+        <div class="item item-password">
+			<input id="password" name="password" class="txt-input txt-password ciphertext" type="password" ng-model="Login.password" placeholder="请输入密码" style="display: inline-block;">
+        </div>
+        <div class="item item-captcha">
+		<input type="hidden" value="1" id="codeLevel">
+        
+				</div>
+        <div class="item item-btns" ng-click="Login.LoginIn()">
+            <a id="loginSubmit" class="btn-login ">登录</a>
+        </div>
+		</form>	
+        <div class="item item-login-option">
+            <span class="register-free">
+		                			<a rel="nofollow" ng-click="Login.Register()">免费注册</a>
+                            </span>
+            <span class="retrieve-password" ng-click="Login.FindCode()" style="display:none">
+				<a href=""> 找回密码</a>  
+            </span>
+        </div>		        
+		    </div>
+</div>
+</body>
+</html>

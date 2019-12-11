@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="Jihe">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/jihexinxi.js"></script>
+<title>集合信息</title>
+<style type="text/css">
+  .zhuyi { width:90%; padding:5%; border-bottom:1px solid #e1e1e1}
+  .zhuyi p { color:#666666; line-height:2em; font-size:1.2em;width: 50%;float: left}
+  .zhuyi textarea {font-size: 1.2em;margin-top: 4px}
+</style>
+</head>
+
+<body ng-controller="JiheController as Jihe">
+<div class="zhanghu">
+<div class="zhuyi">
+  <p>出发集合信息:</p>
+     <textarea class="textsty textarea02" ng-model="Jihe.detail.startgather" name="content" resize="none" rows="2" placeholder="请输入目的地"></textarea>
+</div>
+<div class="zhuyi">
+  <p >机场接送信息:</p>
+     <textarea class="textsty textarea02" ng-model="Jihe.detail.airportsend" name="content" resize="none" rows="2" placeholder="请输入当地气候"></textarea>
+</div>
+<div class="zhuyi">
+  <p >机场集合信息:</p>
+     <textarea class="textsty textarea02" ng-model="Jihe.detail.airportgather" name="content" resize="none" rows="2" placeholder="请输入当地时间"></textarea>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="Code">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<title>修改密码</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/henryLIB.js"></script>
+<script type="text/javascript" src="js/code.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<style type="text/css">
+  .wenbenxiugai.mima {border: none;font-size:1.2em }
+</style>  
+</head>
+
+<body ng-controller="CodeController as Code">
+<div class="xiugai" >
+  <ul>
+    <li>
+      <div class="inp1" ><span class="wenzi2">原密码:</span>
+        <input type="text" ng-model="Code.oldpassword" class="wenbenxiugai mima" placeholder="请输入原密码">
+        <div class="clear"></div>
+      </div>
+    </li>
+    <li>
+      <div class="inp1" ><span class="wenzi2">新密码:</span>
+        <input type="text" ng-model="Code.newpassword" class="wenbenxiugai mima" placeholder="请输入新密码">
+        <div class="clear"></div>
+      </div>
+    </li>
+    <li>
+      <div class="inp1" ><span class="wenzi2">确认密码:</span>
+        <input type="text" ng-model="Code.newpasswordconfirm" class="wenbenxiugai mima" placeholder="请确认新密码">
+        <div class="clear"></div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="quedinganniu" ng-click="Code.confirm()">确定</div>
+</body>
+</html>

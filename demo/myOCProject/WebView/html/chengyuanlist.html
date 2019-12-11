@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="Cheng">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/henryLIB.js"></script>
+<script type="text/javascript" src="js/chengyuanlist.js"></script>
+<script type="text/javascript" src="js/common.js"></script>  
+<title>团成员</title>
+</head>
+
+<body ng-controller="ChengController as Cheng">
+<div class="chengyuan1" ng-show="Cheng.list.length>0">
+  <ul>
+    <li >姓名</li>
+    <li>性别</li>
+    <li>年龄</li>
+    <li>联系电话</li>
+  </ul>
+  <div class="clear"></div>
+</div>
+<!-- <div class="chengyuan" ng-repeat="map in Cheng.list">
+  <ul>
+    <li class="name">{{map.name}}</li>
+    <li class="sex" ng-switch on="map.sex"><span ng-switch-when="1">男</span><span ng-switch-when="2">女</span><span ng-switch-default>男</span></li>
+    <li class="phone">{{map.phone}}</li>
+  </ul>
+  <div class="clear"></div>
+</div> -->
+
+  <div class="chengyuan1" ng-repeat="map in Cheng.list">
+    <ul ng-switch on="map.sex">
+      <li>{{map.name}}</li>
+      <li ng-switch-when="1">男</li>
+      <li ng-switch-when="2">女</li>
+      <li>{{map.age}}</li>
+      <li ng-click="Cheng.call(map.phone);"><a style="color: blue;font-size: 1em;text-decoration: underline;">{{map.phone}}</a></li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+
+<!-- <div class="chengyuan">
+  <ul>
+    <li class="name" style="width:30%">12121</li>
+    <li class="sex" style="width:20%"><span >男</span></li>
+    <li class="phone" style="width:50%">12</li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+<div class="chengyuan">
+  <ul>
+    <li class="name" style="width:30%">12121</li>
+    <li class="sex" style="width:20%"><span >男</span></li>
+    <li class="phone" style="width:50%">12</li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+<div class="chengyuan">
+  <ul>
+    <li class="name" style="width:30%">12121</li>
+    <li class="sex" style="width:20%"><span >男</span></li>
+    <li class="phone" style="width:50%">12</li>
+  </ul>
+  <div class="clear"></div>
+</div> -->
+</body>
+</html>

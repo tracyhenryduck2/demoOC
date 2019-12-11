@@ -1,0 +1,118 @@
+<!doctype html>
+<html ng-app="Xincheng">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/henryLIB.js"></script>
+<script type="text/javascript" src="js/xinchengxinxi.js"></script>
+<script type="text/javascript" src="js/common.js"></script>  
+<title>具体行程信息</title>
+<style type="text/css">
+  .anniu4 {  
+    /* width: 20%; */
+    background: #F00;
+    text-align: center;
+    color: #FFF;
+    font-size: 1em;
+    padding: 2% 4% 2% 4%;
+    margin-top: 5%;
+    margin-left:10px; 
+    float: left;}
+
+  .anniu5 {
+
+    background: #228fcf;
+    text-align: center;
+    color: #FFF;
+    font-size: 1em;
+    padding: 2% 4% 2% 4%;
+    margin-top: 5%; 
+    float: left;
+  }
+
+  .rail_content {
+    margin-bottom: 10px;
+  }
+
+  .mainplace {width: 90%;padding: 15px 15px 22px 17px;border-bottom: 1px solid #e1e1e1;}
+  .mainplace-zhankai {padding-bottom: 22px}
+  .plus {width: 10%;float: left;margin-top: 20px;}
+  .raillist {color:#666666;padding: 8px 5px 8px 0px;    font-size: 1.2em;}
+  .edit_rail {padding-top: 10px;border-top: 1px solid #e1e1e1}
+</style>
+</head>
+
+<body ng-controller="XinchengController as Xincheng">
+<!-- <div class="mainplace">
+ 
+  <div style="width:90%;float:left;">
+  <div style="float:left; width:100%; font-size:1.5em; line-height:1.5em">2015年5月12日第一天</div>
+  <div style="float:left; width:100%; font-size:1.1em;">
+       <div class="anniu5">地点</div>
+      <div class="anniu4">参考天气</div>
+  </div>
+  </div>
+   <div class="plus"><img src="images/img2_03.png"  alt=""/></div>
+  <div class="clear"></div>
+</div> -->
+
+
+<div ng-repeat="map in Xincheng.list" class="mainplace" ng-class="{'mainplace-zhankai':map.zhankai==true}" ng-switch on="map.zhankai">
+ 
+  <div style="width:90%;float:left;">
+  <div style="float:left; width:100%; font-size:1.5em; line-height:1.5em">{{map.date}}第{{$index+1 | NumberFilter}}天</div>
+  <div style="float:left; width:100%; font-size:1.1em; padding-bottom: 10px;">
+       <div class="anniu5" ng-click="Xincheng.addplace($index,map.place)">{{map.place}}</div>
+      <div class="anniu4" ng-click="Xincheng.addreferweather($index,map.referWeather)">{{map.referWeather}}</div>
+  </div>
+  </div>
+   <div class="plus" ng-switch-when="false" ng-click="Xincheng.zhankai($index,true);"><img src="images/img2_03.png"  alt=""/></div>
+   <div class="plus" ng-switch-when="true" ng-click="Xincheng.zhankai($index,false);"><img src="images/img2_06.png"  alt=""/></div>
+   <div class="plus" ng-switch-default     ng-click="Xincheng.zhankai($index,true);"><img src="images/img2_03.png"  alt=""/></div>
+  <div class="clear"></div>
+
+
+
+<div class="rail_detail" ng-style="map.style">
+  <p style=" color:#666666; line-height:2em; font-size:1.2em" ng-show="map.traillist.length>0">行程路线</p>
+   
+  <div class="raillist" ng-repeat="map2 in map.traillist" >
+    <p style="width: 31%;float: left;">{{map2.starttime}}-{{map2.endtime}}</p><p style="width: 60%;float: left;">{{map2.interest}}</p><p style="width: 24px;float: left;" ng-click="Xincheng.delete($index,$parent.$index)"><img src="images/delete.png"></p>
+    <div class="clear"></div>
+  </div>
+
+<div class="edit_rail" ng-show="!map.addflag">
+  <div class="rail_content">
+         <span class="wenzi2">起始时间:</span>
+        <input type="text" readonly class="wenben" ng-model="map.edit_starttime" style=" color: #228fcf;text-align: center;border: 1px solid #228fcf;border-radius: 5px;" ng-click="Xincheng.chooseStartTime($index)">
+        <div class="clear"></div>
+  </div>
+
+  <div class="rail_content">
+         <span class="wenzi2">结束时间:</span>
+        <input type="text" readonly class="wenben" ng-model="map.edit_endtime" style="color: #228fcf;text-align: center;border: 1px solid #228fcf;border-radius: 5px;" ng-click="Xincheng.chooseEndTime($index)">
+        <div class="clear"></div>
+  </div>
+
+    <div class="rail_content">
+         <span class="wenzi2">景&nbsp;&nbsp;点:</span>
+        <input type="text" readonly class="wenben" ng-click="Xincheng.chooseInterest($index,map.edit_interest)" ng-model="map.edit_interest" style="color: #228fcf;text-align: center;border: 1px solid #228fcf;border-radius: 5px;">
+        <div class="clear"></div>
+  </div>
+ 
+
+  <div class="anniu3" ng-click="Xincheng.addrail($index,true)">取消</div>
+  <div class="anniu2" ng-click="Xincheng.confirmrail($index,true)">确定</div>
+  <div class="clear"></div>
+</div>
+
+  <div class="anniu" style="margin-top: 10px" ng-show="map.addflag" ng-click="Xincheng.addrail($index,false)">添加行程</div>
+</div>
+</div>
+
+
+</body>
+</html>

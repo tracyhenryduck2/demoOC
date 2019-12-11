@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="Wode">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/wode.js"></script>
+<script type="text/javascript" src="js/common.js"></script>     
+<title>我的</title>
+</head>
+
+<body ng-controller="WodeController as Wode">
+<div class="touxiang" ng-click="Wode.Login();"><img ng-if="Wode.user==null" src="images/img_03.png"  alt=""/>
+<img ng-if="Wode.user!=null" ng-src="{{Wode.user.avatarurl}}"  alt=""/>
+  <p style="text-align:center; color:#000; font-size:1.5em; line-height:1.5em;" ng-if="Wode.user!=null">{{Wode.user.nickname}}</p>
+<!--   <p style="text-align:center; color:#000; font-size:1.5em; " ng-if="Wode.user!=null">心情</p> -->
+  <p style="text-align:center; color:#000; font-size:1.5em; " ng-if="Wode.user==null">登陆</p>
+</div>
+<div class="wode" style="margin-top: 10px; border-top:1px solid #e1e1e1">
+  <ul>
+    <li ng-click="Wode.gotoMine()">
+      <div style="width:30px; float:left"></div>
+      我的信息
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.gotoHistory()">历史行程
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.gotoJIfen();">我的积分
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.gotoTousu();">投诉建议
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li ng-click="Wode.gotoUpdateCode();">修改密码
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+    <li>关于
+      <div style="width:20px; float:right"><img src="images/anniu1.png"   alt=""/></div>
+    </li>
+  </ul>
+</div>
+<div class="quedinganniu" ng-click="Wode.logout()" ng-show="Wode.user!=null">退出</div>
+</body>
+</html>

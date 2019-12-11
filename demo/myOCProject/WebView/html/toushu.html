@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="Tousu">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/tousu.js"></script>
+<title>投诉建议</title>
+</head>
+
+<body ng-controller="TousuController as Tousu">
+<div style="width:90%; padding:5%; "> <textarea class="textsty textarea12" ng-model="Tousu.content" placeholder="请输入投诉建议" name="content" resize="none"></textarea></div>
+<div class="quedinganniu" ng-click="Tousu.sumbit()">提交</div>
+</body>
+</html>

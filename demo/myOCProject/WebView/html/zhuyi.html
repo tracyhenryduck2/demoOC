@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="Zhuyi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no"/>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/zhuyi.js"></script>
+<title>注意事项</title>
+<style type="text/css">
+  .zhuyi { width:90%; padding:5%; border-bottom:1px solid #e1e1e1}
+  .zhuyi p { color:#666666; line-height:2em; font-size:1.2em;width: 30%;float: left}
+  .zhuyi textarea {font-size: 1.2em;margin-top: 4px}
+</style>
+</head>
+
+
+<body ng-controller="ZhuyiController as Zhuyi">
+<div class="zhuyi">
+	<p>目的地介绍:</p>
+     <textarea class="textsty textarea02" ng-model="Zhuyi.detail.summary" name="content" resize="none" rows="2" placeholder="请输入目的地"></textarea>
+</div>
+<div class="zhuyi">
+	<p >当地气候:</p>
+     <textarea class="textsty textarea02" ng-model="Zhuyi.detail.climate" name="content" resize="none" rows="2" placeholder="请输入当地气候"></textarea>
+</div>
+<div class="zhuyi">
+	<p >当地时间:</p>
+     <textarea class="textsty textarea02" ng-model="Zhuyi.detail.localtimes" name="content" resize="none" rows="2" placeholder="请输入当地时间"></textarea>
+</div>
+<div class="zhuyi">
+  <p >衣着穿戴:</p>
+     <textarea class="textsty textarea02" ng-model="Zhuyi.detail.clothes" name="content" resize="none" rows="2" placeholder="请输入衣着穿戴"></textarea>
+</div>
+<div class="zhuyi">
+  <p>备注:</p>
+     <textarea class="textsty textarea02" ng-model="Zhuyi.detail.note" name="content" resize="none" rows="2" placeholder="请输入备注"></textarea>
+</div>
+</body>
+</html>
