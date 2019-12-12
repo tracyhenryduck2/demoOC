@@ -20,25 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    [self createNav];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = NSLocalizedString(@"设备", nil);
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem =[self itemWithTarget:self action:@selector(alertToAdd) image:@"add" highImage:nil withTintColor:nil];
     [self createWebView];
     
-}
-
-- (void)createNav{
-    UIView *navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-    [self.view addSubview:navView];
-    
-    
-    navView.backgroundColor = [UIColor blueColor];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(100, 20, 200, 30);
-    [button setTitle:@"点击调用js方法" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(navButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    button.backgroundColor = [UIColor redColor];
-    [navView addSubview:button];
 }
 
 - (void)createWebView{

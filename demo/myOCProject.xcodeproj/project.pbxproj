@@ -273,6 +273,7 @@
 		0402AEAA23A12BFA00066DC2 /* BatterHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0402AEA923A12BFA00066DC2 /* BatterHelp.m */; };
 		0402AEB423A133EE00066DC2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0402AEB223A133EE00066DC2 /* MainViewController.m */; };
 		0402AEB723A134D400066DC2 /* Main.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0402AEB623A134D400066DC2 /* Main.xcassets */; };
+		042DA35023A2A2CC009B0A67 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 042DA34F23A2A2CC009B0A67 /* BaseVC.m */; };
 		04C4E09023A13F7300C10BF0 /* denglu.html in Resources */ = {isa = PBXBuildFile; fileRef = 04C4E07723A13F7100C10BF0 /* denglu.html */; };
 		04C4E09123A13F7300C10BF0 /* toushu.html in Resources */ = {isa = PBXBuildFile; fileRef = 04C4E07823A13F7200C10BF0 /* toushu.html */; };
 		04C4E09223A13F7300C10BF0 /* yaojietuan.html in Resources */ = {isa = PBXBuildFile; fileRef = 04C4E07923A13F7200C10BF0 /* yaojietuan.html */; };
@@ -856,6 +857,8 @@
 		0402AEB323A133EE00066DC2 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0402AEB623A134D400066DC2 /* Main.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Main.xcassets; sourceTree = "<group>"; };
 		0402AEB923A1357700066DC2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		042DA34E23A2A2CC009B0A67 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		042DA34F23A2A2CC009B0A67 /* BaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
 		04C4E07723A13F7100C10BF0 /* denglu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = denglu.html; sourceTree = "<group>"; };
 		04C4E07823A13F7200C10BF0 /* toushu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = toushu.html; sourceTree = "<group>"; };
 		04C4E07923A13F7200C10BF0 /* yaojietuan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = yaojietuan.html; sourceTree = "<group>"; };
@@ -939,6 +942,7 @@
 		0402AAE223A10E0500066DC2 /* myOCProject */ = {
 			isa = PBXGroup;
 			children = (
+				042DA34D23A2A2B5009B0A67 /* Base */,
 				04C4DF2E23A13CD500C10BF0 /* WebView */,
 				0402AEB123A133D600066DC2 /* Home */,
 				0402AEB523A134C100066DC2 /* Resource */,
@@ -2195,6 +2199,15 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
+		042DA34D23A2A2B5009B0A67 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				042DA34E23A2A2CC009B0A67 /* BaseVC.h */,
+				042DA34F23A2A2CC009B0A67 /* BaseVC.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		04C4DF2E23A13CD500C10BF0 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2677,6 +2690,7 @@
 				0402AE5C23A1140700066DC2 /* NSSet+Block.m in Sources */,
 				0402ADEC23A1140700066DC2 /* UIBarButtonItem+Action.m in Sources */,
 				0402AAF623A10E0600066DC2 /* main.m in Sources */,
+				042DA35023A2A2CC009B0A67 /* BaseVC.m in Sources */,
 				0402AE8523A1140700066DC2 /* YTKChainRequest.m in Sources */,
 				0402AE4723A1140700066DC2 /* NSString+ArryValue.m in Sources */,
 				0402ADC523A1140600066DC2 /* UIWebVIew+SwipeGesture.m in Sources */,
