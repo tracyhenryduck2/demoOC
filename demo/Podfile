@@ -5,7 +5,6 @@ target "myOCProject" do
 pod 'ReactiveCocoa', '~> 2.5'
 pod 'SDWebImage', '~> 3.7.5'
 pod 'JSONModel', '~> 1.0.1'
-pod 'FMDB/common' , '~>2.5'
 pod 'FMDB/SQLCipher', '~>2.5'
 pod 'XAspect'
 pod 'IQKeyboardManager'

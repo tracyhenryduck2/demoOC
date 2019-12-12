@@ -18,7 +18,13 @@ PODS:
   - AMapLocation (2.6.3):
     - AMapFoundation (~> 1.4)
   - CocoaAsyncSocket (7.6.3)
+  - CocoaLumberjack (3.6.0):
+    - CocoaLumberjack/Core (= 3.6.0)
+  - CocoaLumberjack/Core (3.6.0)
   - DACircularProgress (2.3.1)
+  - FMDB/SQLCipher (2.7.5):
+    - SQLCipher
+  - IQKeyboardManager (6.5.4)
   - JSONModel (1.0.2)
   - LBXScan (1.1.1):
     - ZXingObjC (~> 3.0)
@@ -40,12 +46,18 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - SQLCipher (4.2.0):
+    - SQLCipher/standard (= 4.2.0)
+  - SQLCipher/common (4.2.0)
+  - SQLCipher/standard (4.2.0):
+    - SQLCipher/common
   - XAspect (1.0.5):
     - XAspect/Core (= 1.0.5)
     - XAspect/Macros (= 1.0.5)
   - XAspect/Core (1.0.5):
     - XAspect/Macros
   - XAspect/Macros (1.0.5)
+  - YYText (1.0.7)
   - ZXingObjC (3.6.5):
     - ZXingObjC/All (= 3.6.5)
   - ZXingObjC/All (3.6.5)
@@ -54,6 +66,9 @@ DEPENDENCIES:
   - AFNetworking
   - AMapLocation
   - CocoaAsyncSocket
+  - CocoaLumberjack
+  - FMDB/SQLCipher (~> 2.5)
+  - IQKeyboardManager
   - JSONModel (~> 1.0.1)
   - LBXScan (~> 1.1.1)
   - M13ProgressSuite (~> 1.2.7)
@@ -64,6 +79,7 @@ DEPENDENCIES:
   - SAMKeychain
   - SDWebImage (~> 3.7.5)
   - XAspect
+  - YYText
 
 SPEC REPOS:
   trunk:
@@ -71,7 +87,10 @@ SPEC REPOS:
     - AMapFoundation
     - AMapLocation
     - CocoaAsyncSocket
+    - CocoaLumberjack
     - DACircularProgress
+    - FMDB
+    - IQKeyboardManager
     - JSONModel
     - LBXScan
     - M13ProgressSuite
@@ -81,7 +100,9 @@ SPEC REPOS:
     - ReactiveCocoa
     - SAMKeychain
     - SDWebImage
+    - SQLCipher
     - XAspect
+    - YYText
     - ZXingObjC
 
 SPEC CHECKSUMS:
@@ -89,7 +110,10 @@ SPEC CHECKSUMS:
   AMapFoundation: bc2f6e077b9279942734ba55f9624222fcf42848
   AMapLocation: dc2c4fde95d72087d73934338160fadc72104bb7
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  IQKeyboardManager: 72b359cd7e777e3a984cedbe05f8da45320cbb63
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   LBXScan: dfb4d8ae8e4cff2aa0c9e1771e43954dce1469a9
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
@@ -99,9 +123,11 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SQLCipher: 0187a2180ac288ea686b670b7141da62cd013b16
   XAspect: db50bf487f92dbb8557a7a5365556966c8493af8
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
-PODFILE CHECKSUM: f1b28f1c5e6eeac06310dca92e6266387fe6793c
+PODFILE CHECKSUM: a3908de2d0b3cafd01f96af48e728d273612dec2
 
 COCOAPODS: 1.8.4

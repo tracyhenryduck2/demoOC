@@ -1,4 +1,4 @@
-﻿
+
 
 function GetQueryString(name)
 {
@@ -172,12 +172,7 @@ function progress(type,message,method){
     if(isAndroid()){
     	client.progress(type,message,method);
     }else{
-        client.progress("progress",[type,message,method],
-                        function(success){
-                        },
-                        function(error) {
-                        alert("Error: \r\n"+error);
-                        });
+        window.webkit.messageHandlers.show.postMessage([type,message,method]);
     }
 };
 
