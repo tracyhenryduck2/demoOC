@@ -2,8 +2,8 @@
 //  BaseVC.m
 //  Qibuer
 //
-//  Created by shap on 2016/11/25.
-//  Copyright © 2016年 Henry. All rights reserved.
+//  Created by Tracyhenry on 2021/01/25.
+//  Copyright © 2021 SiterWell. All rights reserved.
 //
 
 #import "BaseVC.h"
@@ -16,19 +16,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [self itemWithTarget:self action:@selector(finish) image:@"back_icon" highImage:nil withTintColor:[UIColor blackColor]];
+    self.navigationItem.leftBarButtonItem = [self itemWithTarget:self action:@selector(finish) image:@"back_icon" highImage:nil withTintColor:nil withSpace:-25];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor whiteColor]];
+    if (@available(iOS 13.0, *)) {
+     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDarkContent];
+     } else {
+     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+     }
+    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor]};
+
 }
 
-- (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage withTintColor:(UIColor *)color
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+
+}
+
+- (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage withTintColor:(UIColor *)color withSpace:(CGFloat)space
 {
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -44,11 +55,36 @@
     [btn setImage:img forState:UIControlStateNormal];
     
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    CGSize btnSize = CGSizeMake(35, 44);
+    CGSize btnSize = CGSizeMake(44, 44);
     CGRect frame = btn.frame;
     frame.size = btnSize;
     btn.frame = frame;
-    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 12)];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, space, 0, 0)];
+    return [[UIBarButtonItem alloc] initWithCustomView:btn];
+}
+
+- (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image text:(NSString *)content withTintColor:(UIColor *)color
+{
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *img= nil;
+    if(color==nil){
+        img=[[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    else{
+        img=[UIImage imageNamed:image];
+        [btn setTintColor:color];
+    }
+    NSDictionary *attrs2 = @{NSFontAttributeName : SYSTEMFONT(15)};
+    CGSize size2=[content sizeWithAttributes:attrs2];
+    [btn setImage:img forState:UIControlStateNormal];
+    [btn setTitle:content forState:UIControlStateNormal];
+    [btn setTitleColor:ThemeColor forState:UIControlStateNormal];
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    CGSize btnSize = CGSizeMake(size2.width+44, 44);
+    CGRect frame = btn.frame;
+    frame.size = btnSize;
+    btn.frame = frame;
     return [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
 
@@ -69,14 +105,28 @@
     [btn setTintColor:color];
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     btn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    [btn sizeToFit];
+    CGSize btnSize = CGSizeMake(44, 44);
     CGRect frame = btn.frame;
+    frame.size = btnSize;
     btn.frame = frame;
     return [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
 
 -(void)finish{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+//UIColor 转UIImage（UIImage+YYAdd.m也是这种实现）
+- (UIImage*) createImageWithColor: (UIColor*) color
+{
+    CGRect rect=CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 @end

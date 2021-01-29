@@ -23,7 +23,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = NSLocalizedString(@"设备", nil);
     self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem =[self itemWithTarget:self action:@selector(alertToAdd) image:@"add" highImage:nil withTintColor:nil];
+    self.navigationItem.rightBarButtonItem =[self itemWithTarget:self action:@selector(alertToAdd) image:@"add" highImage:nil withTintColor:nil withSpace:-25];
     [self createWebView];
     
 }
